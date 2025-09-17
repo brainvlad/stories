@@ -1,0 +1,112 @@
+.player {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 0 8px;
+  height: 100vh;
+}
+
+.timeline {
+  display: flex;
+  margin: 5px 0;
+}
+.timeline__chunk {
+  height: 3px;
+  width: 100%;
+  background-color: #717171;
+  border-radius: 2px;
+}
+.timeline__chunk_active > .timeline__chunk-inner, .timeline__chunk_active ~ .timeline__chunk > .timeline__chunk-inner {
+  width: 0;
+}
+.timeline__chunk + .timeline__chunk {
+  margin-left: 4px;
+}
+.timeline__chunk-inner {
+  height: inherit;
+  background-color: #fff;
+  border-radius: inherit;
+}
+
+.player-content {
+  position: relative;
+  height: 100%;
+}
+.player-content__list {
+  height: inherit;
+}
+.player-content__switcher {
+  position: absolute;
+  z-index: 1;
+  width: 30%;
+  height: 100%;
+}
+.player-content__switcher_prev {
+  top: 0;
+  left: 0;
+}
+.player-content__switcher_next {
+  top: 0;
+  right: 0;
+}
+.player-content__chunk {
+  height: inherit;
+  max-height: 800px;
+  display: none;
+  position: relative;
+}
+.player-content__chunk_active {
+  display: block;
+}
+.player-content__chunk img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.player-content__overlay {
+  position: absolute;
+  user-select: none;
+}
+.player-content__question {
+  font-family: sans-serif;
+  font-size: 16px;
+  color: #262626;
+  background-color: #fefefe;
+  padding: 12px;
+  min-width: 200px;
+  text-align: center;
+  border-radius: 12px;
+}
+.player-content__question-answer-list {
+  margin-top: 12px;
+  display: flex;
+  gap: 8px;
+}
+.player-content__question-answer-list button {
+  width: 100%;
+  border-radius: 8px;
+  background-color: #ffb029;
+  color: #fefefe;
+  font-size: 22px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.player-content__question-answer-list button:nth-child(2) {
+  background-color: rgb(255, 212, 41);
+}
+
+@keyframes scale {
+  50% {
+    transform: scale(2);
+  }
+}
+.bg-black {
+  padding: 8px 18px;
+  background: #303030;
+}
+
+.border-round-full {
+  border-radius: 100px;
+}
+
+/*# sourceMappingURL=lib.css.map */
