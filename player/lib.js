@@ -22,7 +22,8 @@ function initPlayer(params) {
   }
 
   let
-    timer;
+    timer,
+    isPlaying = true;
 
   let
     timelineChunks = '',
@@ -40,9 +41,29 @@ function initPlayer(params) {
   target.innerHTML = generatePlayerLayout();
   target.querySelector('.player-content__switcher_prev').addEventListener('click', switchToPrevChunk);
   target.querySelector('.player-content__switcher_next').addEventListener('click', switchToNextChunk);
-  target.querySelector('.player-content__chunk').addEventListener('mousedown', pinchChunk);
 
   runChunkSwitching(params.delayPerSlide || 1, 1);
+
+  const
+    playerButton = target.querySelector('.player');
+
+  if (playerButton) {
+    playerButton.addEventListener('mousedown', () => {
+      isPlaying = false;
+    });
+
+    playerButton.addEventListener('mouseup', () => {
+      isPlaying = true;
+    });
+
+    playerButton.addEventListener('touchstart', () => {
+      isPlaying = false;
+    });
+
+    playerButton.addEventListener('touchend', () => {
+      isPlaying = true;
+    });
+  }
 
   return target.querySelector('.player');
 
@@ -176,6 +197,8 @@ function initPlayer(params) {
     clearInterval(timer);
 
     timer = setInterval(() => {
+      if (!isPlaying) return;
+
       const active = target.querySelector('.timeline__chunk_active').querySelector('.timeline__chunk-inner');
       const width = parseFloat(active.style.width) || 0;
 
