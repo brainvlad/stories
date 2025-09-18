@@ -210,10 +210,6 @@ function initPlayer(params) {
       active.style.width = String(width + step) + '%';
     }, time * 1000 * step / 100);
   }
-
-  function pinchChunk() {
-    console.log('timer')
-  }
 }
 
 
